@@ -14,17 +14,17 @@ public class BasePresenter<V extends IBaseView> {
         mViewReference = new SoftReference(view);
     }
 
-    public V getRealView(){
+    protected V getRealView(){
         return mViewReference == null? null:mViewReference.get();
     }
 
-    public void detachView(){
+    protected void detachView(){
         if(mViewReference != null){
             mViewReference.clear();
         }
     }
 
-    private boolean isDetached(){
+    protected boolean isDetached(){
         return getRealView() == null;
     }
 }
